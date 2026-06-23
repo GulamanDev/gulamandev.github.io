@@ -6,37 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <title>Justin Apolonio Portfolio Website</title>
+    <title>Justin Apolonio's Portfolio Website</title>
 </head>
 <body>
     <header>
-        <a href="#" class="logo">Justin</a>
+        <a href="#home" class="logo">Justin Apolonio</a>
 
         <nav>
-            <a href="#" class="active"> Home</a>
-            <a href="#" >Services</a>
-            <a href="#" >Skills</a>
-            <a href="#" >Education</a>
-            <a href="#" >Experience</a>
-            <a href="#" >Contact</a>
+            <a href="#home" class="active">About</a>
+            <a href="#works">Works</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
-    <section class="home">
+
+    <section id="home" class="home">
         <div class="home-img">
-            <img src="main.jpg" alt="">
+            <img src="image.jpg" alt="Portrait of Justin Apolonio">
         </div>
         <div class="home-content">
             <h1>Hi, It's <span>Justin</span></h1>
             <h3 class="typing-text">I'm a <span></span></h3>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus labore dolores esse. Odit similique doloribus tenetur doloremque, sunt commodi in ipsa repudiandae debitis deleniti blanditiis quibusdam quaerat neque asperiores ea.</p>
+            <p>A creative problem-solver who transforms ideas into engaging interactive experiences through thoughtful design, visual storytelling, and playful creativity.</p>
             <div class="social-icons">
-                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="#"><i class="fa-brands fa-github"></i></a>
-                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/justinapolonio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.artstation.com/gulaman_arts" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-artstation"></i></a>
+                <a href="https://github.com/GulamanDev" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.instagram.com/gulaman_dev" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
             </div>
-            <a href="#" class="btn">Hire me</a>
+            <a href="#contact" class="btn">Hire me</a>
         </div>
     </section>
+
+    <section id="works" class="content-section">
+        <h2>Works</h2>
+        <p>I create polished game art, character concepts, UI visuals, and interactive design pieces that bring ideas to life.</p>
+    </section>
+
+    <section id="contact" class="content-section">
+        <h2>Contact</h2>
+        <p>Let’s build something memorable. Reach out for collaborations, commissions, or creative opportunities.</p>
+        <a href="mailto:justinapolonio2000@gmail.com" class="btn">Email Me</a>
+    </section>
+
+    <script>
+        const navLinks = document.querySelectorAll('nav a');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.forEach(item => item.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
