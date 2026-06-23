@@ -121,6 +121,11 @@ section{
     line-height: 1.8;
 }
 
+.button-wrap{
+    display: inline-flex;
+    width: fit-content;
+}
+
 .home{
     display: flex;
     justify-content: center;
