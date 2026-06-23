@@ -25,8 +25,11 @@
         </div>
         <div class="home-content">
             <h1>Hi, It's <span>Justin</span></h1>
-            <h3 class="typing-text">I'm a <span></span></h3>
-            <p>A creative problem-solver who transforms ideas into engaging interactive experiences through thoughtful design, visual storytelling, and playful creativity.</p>
+            <h3 class="typing-text">I'm a <span id="typing-text"></span><span class="cursor">|</span></h3>
+            <p>Also known as Gulaman Dev. I’m a game developer and creative problem-solver who speaks fluent Artist, Programmer, and Project Manager.
+                <br>
+                <br>
+                I bridge the gap between creative vision and technical execution, with a strong emphasis on 2D art pipelines. Whether I am drafting concept art, designing vibrant 2D environments and UI, writing clean gameplay code, or managing production milestones, my goal remains the same: transforming bold, playful ideas into highly engaging interactive experiences without sacrificing scope or performance.</p>
             <div class="social-icons">
                 <a href="https://www.linkedin.com/in/justinapolonio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
                 <a href="https://www.artstation.com/gulaman_arts" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-artstation"></i></a>
@@ -39,7 +42,12 @@
 
     <section id="works" class="content-section">
         <h2>Works</h2>
-        <p>I create polished game art, character concepts, UI visuals, and interactive design pieces that bring ideas to life.</p>
+        <p>A collection of visual pieces that explore character design, environment art, and polished game-ready imagery.</p>
+        <div class="portfolio-showcase">
+            <img src="image.jpg" alt="Artwork preview 1">
+            <img src="image.jpg" alt="Artwork preview 2">
+            <img src="image.jpg" alt="Artwork preview 3">
+        </div>
     </section>
 
     <section id="contact" class="content-section">
@@ -52,6 +60,7 @@
 
     <script>
         const navLinks = document.querySelectorAll('nav a');
+        const sections = document.querySelectorAll('section');
 
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -59,6 +68,60 @@
                 link.classList.add('active');
             });
         });
+
+        function setActiveNav() {
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', setActiveNav);
+        window.addEventListener('load', setActiveNav);
+
+        const words = ['Game Developer', '2D Artist', 'Concept Artist'];
+        const typingElement = document.getElementById('typing-text');
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeLoop() {
+            const currentWord = words[wordIndex];
+
+            if (!isDeleting) {
+                typingElement.textContent = currentWord.slice(0, charIndex + 1);
+                charIndex++;
+
+                if (charIndex === currentWord.length) {
+                    isDeleting = true;
+                    setTimeout(typeLoop, 1200);
+                    return;
+                }
+            } else {
+                typingElement.textContent = currentWord.slice(0, charIndex - 1);
+                charIndex--;
+
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                }
+            }
+
+            setTimeout(typeLoop, isDeleting ? 70 : 120);
+        }
+
+        typeLoop();
     </script>
 </body>
 </html>
